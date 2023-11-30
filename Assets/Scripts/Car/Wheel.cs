@@ -14,17 +14,16 @@ public class Wheel : MonoBehaviour
         Vector3 position;
         Quaternion rotation;
 
-
-
-
         wheelCollider.GetWorldPose(out position, out rotation);
-
-        Debug.Log("Col Pos: " + position, wheelCollider.transform.gameObject);
 
         transform.position = position;
         transform.rotation = rotation;
 
-        Debug.Log("Wheel Pos: " + transform.position, transform.gameObject);
+    }
+
+    public void HandleAcceleration(float motorSpeed)
+    {
+        wheelCollider.motorTorque = motorSpeed;
     }
 
 }
