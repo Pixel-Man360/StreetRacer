@@ -61,6 +61,16 @@ public class Wheel : MonoBehaviour
         return wheelCollider.isGrounded;
     }
 
+    internal float GetRPM()
+    {
+        return wheelCollider.rpm;
+    }
+
+    internal float GetRadius()
+    {
+        return wheelCollider.radius;
+    }
+
 
 
 }

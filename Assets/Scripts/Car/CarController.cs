@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,29 +6,52 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
+    [SerializeField] private EngineAudio engineAudio;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private List<Wheel> wheels;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float motorPower;
     [SerializeField] private float brakePower;
     [SerializeField] private AnimationCurve steerCurve;
     [SerializeField] private float fallspeed = 3f;
     private float speed;
+    private float speedClamped;
     private float slipAngle;
     private float brakeInput;
+
+    [HideInInspector] public int isEngineRunning;
 
 
 
     void FixedUpdate()
     {
-        speed = rb.velocity.magnitude;
+        speed = wheels[2].GetRPM() * wheels[2].GetRadius() * 2f * Mathf.PI / 10f;
+        speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
 
-
+        CheckEngineAudio();
+        FallingControl();
 
         CheckSlip();
         CheckSmokeParticles();
         HandleAcceleration();
         HandleBraking();
         HandleSteering();
+    }
+
+    private void CheckEngineAudio()
+    {
+        if (Mathf.Abs(input.gasInput) > 0 && isEngineRunning == 0)
+        {
+            engineAudio.StartEngine();
+        }
+
+        else if (input.gasInput == 0)
+        {
+            if (Mathf.Abs(GetSpeedRatio()) <= 0.05f)
+            {
+                engineAudio.StopEngine();
+            }
+        }
     }
 
     private void FallingControl()
@@ -81,11 +105,21 @@ public class CarController : MonoBehaviour
     }
     private void HandleAcceleration()
     {
-        foreach (Wheel wheel in wheels)
+        if (isEngineRunning > 1)
         {
-            wheel.HandleAcceleration(motorPower * input.gasInput);
+            if (Mathf.Abs(speed) < maxSpeed)
+            {
+                wheels[0].HandleAcceleration(motorPower * input.gasInput);
+                wheels[1].HandleAcceleration(motorPower * input.gasInput);
+            }
+            else
+            {
+                wheels[2].HandleAcceleration(0);
+                wheels[3].HandleAcceleration(0);
+            }
         }
     }
+
 
     private void HandleBraking()
     {
@@ -111,6 +145,13 @@ public class CarController : MonoBehaviour
         //  streeringAngle = Mathf.Clamp(streeringAngle, -60f, 60f);
         wheels[0].ApplySteerAngle(streeringAngle);
         wheels[1].ApplySteerAngle(streeringAngle);
+    }
+
+
+    internal float GetSpeedRatio()
+    {
+        float gas = Mathf.Clamp(Mathf.Abs(input.gasInput), 0.5f, 1f);
+        return speedClamped * gas / maxSpeed;
     }
 
 
