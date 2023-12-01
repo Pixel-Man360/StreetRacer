@@ -43,7 +43,7 @@ public class Wheel : MonoBehaviour
     {
         wheelCollider.GetGroundHit(out WheelHit hit);
 
-        float slipAllowance = 0.5f;
+        float slipAllowance = 1f;
 
         if (Mathf.Abs(hit.sidewaysSlip) + Mathf.Abs(hit.forwardSlip) > slipAllowance)
         {

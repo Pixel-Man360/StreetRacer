@@ -23,8 +23,9 @@ public class EngineAudio : MonoBehaviour
 
     void Start()
     {
-        idleSound.Play();
         idleSound.volume = idleMaxVolume;
+
+        idleSound.Play();
         runningSound.volume = 0;
         reverseSound.volume = 0;
     }
@@ -86,7 +87,7 @@ public class EngineAudio : MonoBehaviour
 
     public void StopEngine()
     {
-        // carController.isEngineRunning = 0;
+        carController.isEngineRunning = 0;
         isEngineRunning = false;
     }
 }

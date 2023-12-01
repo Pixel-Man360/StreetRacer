@@ -21,6 +21,11 @@ public class CarController : MonoBehaviour
 
     [HideInInspector] public int isEngineRunning;
 
+    void Start()
+    {
+        Physics.gravity = new Vector3(0, Physics.gravity.y * fallspeed, 0);
+    }
+
 
 
     void FixedUpdate()
@@ -29,7 +34,7 @@ public class CarController : MonoBehaviour
         speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
 
         CheckEngineAudio();
-        FallingControl();
+        //  FallingControl();
 
         CheckSlip();
         CheckSmokeParticles();
@@ -105,19 +110,19 @@ public class CarController : MonoBehaviour
     }
     private void HandleAcceleration()
     {
-        if (isEngineRunning > 1)
+        //if (isEngineRunning > 1)
+        // {
+        if (Mathf.Abs(speed) < maxSpeed)
         {
-            if (Mathf.Abs(speed) < maxSpeed)
-            {
-                wheels[0].HandleAcceleration(motorPower * input.gasInput);
-                wheels[1].HandleAcceleration(motorPower * input.gasInput);
-            }
-            else
-            {
-                wheels[2].HandleAcceleration(0);
-                wheels[3].HandleAcceleration(0);
-            }
+            wheels[0].HandleAcceleration(motorPower * input.gasInput);
+            wheels[1].HandleAcceleration(motorPower * input.gasInput);
         }
+        else
+        {
+            wheels[2].HandleAcceleration(0);
+            wheels[3].HandleAcceleration(0);
+        }
+        // }
     }
 
 
@@ -142,7 +147,7 @@ public class CarController : MonoBehaviour
     {
         float streeringAngle = input.steerInput * steerCurve.Evaluate(speed);
         //  streeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
-        //  streeringAngle = Mathf.Clamp(streeringAngle, -60f, 60f);
+        streeringAngle = Mathf.Clamp(streeringAngle, -60f, 60f);
         wheels[0].ApplySteerAngle(streeringAngle);
         wheels[1].ApplySteerAngle(streeringAngle);
     }
