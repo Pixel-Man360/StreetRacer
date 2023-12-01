@@ -26,4 +26,9 @@ public class Wheel : MonoBehaviour
         wheelCollider.motorTorque = motorSpeed;
     }
 
+    public void ApplySteerAngle(float angle)
+    {
+        wheelCollider.steerAngle = angle;
+    }
+
 }
