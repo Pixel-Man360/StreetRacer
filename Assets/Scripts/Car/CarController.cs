@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
         speed = rb.velocity.magnitude;
 
         CheckSlip();
+        CheckSmokeParticles();
         HandleAcceleration();
         HandleBraking();
         HandleSteering();
@@ -49,6 +50,14 @@ public class CarController : MonoBehaviour
         }
     }
 
+
+    private void CheckSmokeParticles()
+    {
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.SetSmoke();
+        }
+    }
     private void HandleAcceleration()
     {
         foreach (Wheel wheel in wheels)
@@ -77,6 +86,8 @@ public class CarController : MonoBehaviour
     private void HandleSteering()
     {
         float streeringAngle = input.steerInput * steerCurve.Evaluate(speed);
+        //  streeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
+        //  streeringAngle = Mathf.Clamp(streeringAngle, -60f, 60f);
         wheels[0].ApplySteerAngle(streeringAngle);
         wheels[1].ApplySteerAngle(streeringAngle);
     }
