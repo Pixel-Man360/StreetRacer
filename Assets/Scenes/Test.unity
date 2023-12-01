@@ -3415,7 +3415,7 @@ MonoBehaviour:
   - {fileID: 260831137}
   - {fileID: 807809770}
   motorPower: 1000
-  brakePower: 1000
+  brakePower: 2000
   steerCurve:
     serializedVersion: 2
     m_Curve:

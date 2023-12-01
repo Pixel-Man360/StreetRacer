@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
 
     private void CheckSlip()
     {
-        slipAngle = Vector3.SignedAngle(transform.forward, rb.velocity, Vector3.up);
+        slipAngle = Vector3.Angle(transform.forward, rb.velocity - transform.forward);
 
         if (slipAngle < 120f)
         {
@@ -37,12 +37,15 @@ public class CarController : MonoBehaviour
                 brakeInput = Mathf.Abs(input.gasInput);
                 input.gasInput = 0;
             }
-
             else
             {
                 brakeInput = 0;
             }
+        }
 
+        else
+        {
+            brakeInput = 0;
         }
     }
 
