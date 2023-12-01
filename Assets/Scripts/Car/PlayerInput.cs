@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    internal float horizontal = 0;
-    internal float vertical = 0;
+    internal float steerInput = 0;
+    internal float gasInput = 0;
 
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        steerInput = Input.GetAxis("Horizontal");
+        gasInput = Input.GetAxis("Vertical");
     }
 }
