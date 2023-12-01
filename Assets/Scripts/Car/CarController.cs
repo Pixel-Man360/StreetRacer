@@ -10,6 +10,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float motorPower;
     [SerializeField] private float brakePower;
     [SerializeField] private AnimationCurve steerCurve;
+    [SerializeField] private float fallspeed = 3f;
     private float speed;
     private float slipAngle;
     private float brakeInput;
@@ -20,11 +21,31 @@ public class CarController : MonoBehaviour
     {
         speed = rb.velocity.magnitude;
 
+
+
         CheckSlip();
         CheckSmokeParticles();
         HandleAcceleration();
         HandleBraking();
         HandleSteering();
+    }
+
+    private void FallingControl()
+    {
+        bool isGrounded = true;
+
+        foreach (Wheel wheel in wheels)
+        {
+            if (!wheel.IsGrounded())
+            {
+                isGrounded = false;
+                break;
+            }
+        }
+
+        if (isGrounded) return;
+
+        rb.velocity = Vector3.down * fallspeed * Time.fixedDeltaTime;
     }
 
     private void CheckSlip()

@@ -24,22 +24,22 @@ public class Wheel : MonoBehaviour
 
     }
 
-    public void HandleAcceleration(float motorSpeed)
+    internal void HandleAcceleration(float motorSpeed)
     {
         wheelCollider.motorTorque = motorSpeed;
     }
 
-    public void ApplySteerAngle(float angle)
+    internal void ApplySteerAngle(float angle)
     {
         wheelCollider.steerAngle = angle;
     }
 
-    public void ApplyBrake(float power)
+    internal void ApplyBrake(float power)
     {
         wheelCollider.brakeTorque = power;
     }
 
-    public void SetSmoke()
+    internal void SetSmoke()
     {
         wheelCollider.GetGroundHit(out WheelHit hit);
 
@@ -55,5 +55,12 @@ public class Wheel : MonoBehaviour
             smokeParticle.Stop();
         }
     }
+
+    internal bool IsGrounded()
+    {
+        return wheelCollider.isGrounded;
+    }
+
+
 
 }
