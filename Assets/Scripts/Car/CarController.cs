@@ -35,8 +35,6 @@ public class CarController : MonoBehaviour
         speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
 
         CheckEngineAudio();
-        //  FallingControl();
-
         CheckSlip();
         CheckSmokeParticles();
         HandleAcceleration();
@@ -60,41 +58,19 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void FallingControl()
-    {
-        bool isGrounded = true;
-
-        foreach (Wheel wheel in wheels)
-        {
-            if (!wheel.IsGrounded())
-            {
-                isGrounded = false;
-                break;
-            }
-        }
-
-        if (isGrounded) return;
-
-        rb.velocity = Vector3.down * fallspeed * Time.fixedDeltaTime;
-    }
-
     private void CheckSlip()
     {
         slipAngle = Vector3.Angle(transform.forward, rb.velocity - transform.forward);
+        float movingDirection = Vector3.Dot(transform.forward, rb.velocity);
 
-        if (slipAngle < 120f)
+        if (movingDirection < -0.5f && input.gasInput > 0)
         {
-            if (input.gasInput < 0)
-            {
-                brakeInput = Mathf.Abs(input.gasInput);
-                input.gasInput = 0;
-            }
-            else
-            {
-                brakeInput = 0;
-            }
+            brakeInput = Mathf.Abs(input.gasInput);
         }
-
+        else if (movingDirection > 0.5f && input.gasInput < 0)
+        {
+            brakeInput = Mathf.Abs(input.gasInput);
+        }
         else
         {
             brakeInput = 0;
@@ -111,8 +87,6 @@ public class CarController : MonoBehaviour
     }
     private void HandleAcceleration()
     {
-        //if (isEngineRunning > 1)
-        // {
         if (Mathf.Abs(speed) < maxSpeed)
         {
             wheels[0].HandleAcceleration(motorPower * input.gasInput);
@@ -123,7 +97,6 @@ public class CarController : MonoBehaviour
             wheels[2].HandleAcceleration(0);
             wheels[3].HandleAcceleration(0);
         }
-        // }
     }
 
 
@@ -146,11 +119,15 @@ public class CarController : MonoBehaviour
 
     private void HandleSteering()
     {
-        float streeringAngle = input.steerInput * steerCurve.Evaluate(speed);
-        //  streeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
-        streeringAngle = Mathf.Clamp(streeringAngle, -60f, 60f);
-        wheels[0].ApplySteerAngle(streeringAngle);
-        wheels[1].ApplySteerAngle(streeringAngle);
+        float steeringAngle = input.steerInput * steerCurve.Evaluate(speed);
+        if (slipAngle < 120f)
+        {
+            steeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
+        }
+        steeringAngle = Mathf.Clamp(steeringAngle, -90f, 90f);
+
+        wheels[0].ApplySteerAngle(steeringAngle);
+        wheels[1].ApplySteerAngle(steeringAngle);
     }
 
 
@@ -159,10 +136,5 @@ public class CarController : MonoBehaviour
         float gas = Mathf.Clamp(Mathf.Abs(input.gasInput), 0.5f, 1f);
         return speedClamped * gas / maxSpeed;
     }
-
-
-
-
-
 }
 
