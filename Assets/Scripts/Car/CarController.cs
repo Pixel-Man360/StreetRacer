@@ -14,6 +14,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float brakePower;
     [SerializeField] private AnimationCurve steerCurve;
     [SerializeField] private float fallspeed = 3f;
+    [SerializeField] private Transform centerOfMass;
     private float speed;
     private float speedClamped;
     private float slipAngle;
