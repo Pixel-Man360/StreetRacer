@@ -25,6 +25,7 @@ public class CarController : MonoBehaviour
     void Start()
     {
         Physics.gravity = new Vector3(0, Physics.gravity.y * fallspeed, 0);
+        rb.centerOfMass = centerOfMass.transform.localPosition;
     }
 
 
@@ -120,11 +121,11 @@ public class CarController : MonoBehaviour
     private void HandleSteering()
     {
         float steeringAngle = input.steerInput * steerCurve.Evaluate(speed);
-        if (slipAngle < 120f)
-        {
-            steeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
-        }
-        steeringAngle = Mathf.Clamp(steeringAngle, -90f, 90f);
+        // if (slipAngle < 120f)
+        // {
+        //     steeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
+        // }
+        // steeringAngle = Mathf.Clamp(steeringAngle, -90f, 90f);
 
         wheels[0].ApplySteerAngle(steeringAngle);
         wheels[1].ApplySteerAngle(steeringAngle);
