@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
@@ -19,6 +20,31 @@ public class CarController : MonoBehaviour
     private float speedClamped;
     private float slipAngle;
     private float brakeInput;
+    public float RPM;
+    public float redLine;
+    public float idleRPM;
+    public TMP_Text rpmText;
+    public TMP_Text gearText;
+    public Transform rpmNeedle;
+    public float minNeedleRotation;
+    public float maxNeedleRotation;
+    public int currentGear;
+
+    public float[] gearRatios;
+    public float differentialRatio;
+    private float currentTorque;
+    private float clutch;
+    private float wheelRPM;
+    public AnimationCurve hpToRPMCurve;
+    private GearState gearState;
+    public float increaseGearRPM;
+    public float decreaseGearRPM;
+    public float changeGearTime = 0.5f;
+
+    public GameObject tireTrail;
+    public Material brakeMaterial;
+    public Color brakingColor;
+    public float brakeColorIntensity;
 
     [HideInInspector] public int isEngineRunning;
 
@@ -26,6 +52,13 @@ public class CarController : MonoBehaviour
     {
         Physics.gravity = new Vector3(0, Physics.gravity.y * fallspeed, 0);
         rb.centerOfMass = centerOfMass.transform.localPosition;
+    }
+
+    void Update()
+    {
+        rpmNeedle.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(minNeedleRotation, maxNeedleRotation, RPM / (redLine * 1.1f)));
+        rpmText.text = RPM.ToString("0,000") + "rpm";
+        gearText.text = (gearState == GearState.Neutral) ? "N" : (currentGear + 1).ToString();
     }
 
 
@@ -138,4 +171,13 @@ public class CarController : MonoBehaviour
         return speedClamped * gas / maxSpeed;
     }
 }
+
+public enum GearState
+{
+    Neutral,
+    Running,
+    CheckingChange,
+    Changing
+};
+
 

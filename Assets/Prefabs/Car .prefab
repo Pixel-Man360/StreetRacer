@@ -13180,7 +13180,7 @@ Transform:
   - {fileID: 1366400501808696445}
   - {fileID: 2036071028519928724}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4650778499388730570
 MonoBehaviour:
@@ -13243,6 +13243,30 @@ MonoBehaviour:
     m_RotationOrder: 4
   fallspeed: 1.15
   centerOfMass: {fileID: 2036071028519928724}
+  RPM: 0
+  redLine: 0
+  idleRPM: 0
+  rpmText: {fileID: 0}
+  gearText: {fileID: 0}
+  rpmNeedle: {fileID: 0}
+  minNeedleRotation: 0
+  maxNeedleRotation: 0
+  currentGear: 0
+  gearRatios: []
+  differentialRatio: 0
+  hpToRPMCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  increaseGearRPM: 0
+  decreaseGearRPM: 0
+  changeGearTime: 0.5
+  tireTrail: {fileID: 0}
+  brakeMaterial: {fileID: 0}
+  brakingColor: {r: 0, g: 0, b: 0, a: 0}
+  brakeColorIntensity: 0
   isEngineRunning: 0
 --- !u!114 &7966817818998817682
 MonoBehaviour:
