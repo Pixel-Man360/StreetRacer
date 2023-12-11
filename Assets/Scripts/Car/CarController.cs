@@ -16,6 +16,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private AnimationCurve steerCurve;
     [SerializeField] private float fallspeed = 3f;
     [SerializeField] private Transform centerOfMass;
+    [SerializeField] private Transform cameraOffset;
     private float speed;
     private float speedClamped;
     private float slipAngle;
@@ -54,12 +55,12 @@ public class CarController : MonoBehaviour
         rb.centerOfMass = centerOfMass.transform.localPosition;
     }
 
-    void Update()
-    {
-        rpmNeedle.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(minNeedleRotation, maxNeedleRotation, RPM / (redLine * 1.1f)));
-        rpmText.text = RPM.ToString("0,000") + "rpm";
-        gearText.text = (gearState == GearState.Neutral) ? "N" : (currentGear + 1).ToString();
-    }
+    // void Update()
+    // {
+    //     rpmNeedle.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(minNeedleRotation, maxNeedleRotation, RPM / (redLine * 1.1f)));
+    //     rpmText.text = RPM.ToString("0,000") + "rpm";
+    //     gearText.text = (gearState == GearState.Neutral) ? "N" : (currentGear + 1).ToString();
+    // }
 
 
 
@@ -169,6 +170,11 @@ public class CarController : MonoBehaviour
     {
         float gas = Mathf.Clamp(Mathf.Abs(input.gasInput), 0.5f, 1f);
         return speedClamped * gas / maxSpeed;
+    }
+
+    public Transform GetCameraOffset()
+    {
+        return cameraOffset;
     }
 }
 
