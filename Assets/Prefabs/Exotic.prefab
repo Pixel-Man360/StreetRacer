@@ -258,7 +258,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 25000
     damper: 1000
-    targetPosition: 0.7
+    targetPosition: 0.8
   m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0.5
   m_Mass: 80
@@ -916,7 +916,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 25000
     damper: 1000
-    targetPosition: 0.7
+    targetPosition: 0.8
   m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0.5
   m_Mass: 80
@@ -10823,7 +10823,6 @@ GameObject:
   - component: {fileID: 5260556853988059399}
   - component: {fileID: 4407531464653345265}
   - component: {fileID: 1460290493355540905}
-  - component: {fileID: 2444120664029533134}
   m_Layer: 5
   m_Name: SM_Veh_Exotic_01_Rear_Bumper_02
   m_TagString: Untagged
@@ -10920,28 +10919,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43967927024352644, guid: 440a5785a3d64c74a8b637a9ee00b5c2, type: 2}
---- !u!64 &2444120664029533134
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246251667666480679}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f61d9f340d102274a97267ef56a14651, type: 3}
 --- !u!1 &3473863452847212626
 GameObject:
   m_ObjectHideFlags: 0
@@ -11079,8 +11056,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6499704525012282227}
-  - component: {fileID: 7034078152041495540}
-  - component: {fileID: 6955630192136086302}
   m_Layer: 5
   m_Name: Exotic
   m_TagString: Untagged
@@ -11106,33 +11081,6 @@ Transform:
   m_Father: {fileID: 6065209715728148000}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7034078152041495540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3632621994220649186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7e5703d57fc4f6b8896d16a9ff1e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 10
---- !u!114 &6955630192136086302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3632621994220649186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee23e9368ca24587817bf603c994fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carId: 2
-  carName: Lambo
 --- !u!1 &3701159560247596342
 GameObject:
   m_ObjectHideFlags: 0
@@ -17317,7 +17265,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 25000
     damper: 1000
-    targetPosition: 0.7
+    targetPosition: 0.8
   m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0.5
   m_Mass: 80
@@ -17937,7 +17885,7 @@ Transform:
   - {fileID: 2036071028519928724}
   - {fileID: 6499704525012282227}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4650778499388730570
 MonoBehaviour:
@@ -17971,9 +17919,9 @@ MonoBehaviour:
   - {fileID: 8528553930704767406}
   - {fileID: 2657854030951569767}
   - {fileID: 9036499597352170955}
-  maxSpeed: 350
-  motorPower: 2000
-  brakePower: 5000
+  maxSpeed: 500
+  motorPower: 2500
+  brakePower: 5500
   steerCurve:
     serializedVersion: 2
     m_Curve:
@@ -18683,7 +18631,6 @@ GameObject:
   - component: {fileID: 5858840699150451637}
   - component: {fileID: 157456178061466181}
   - component: {fileID: 7937042009724224701}
-  - component: {fileID: 1434342927841601033}
   m_Layer: 5
   m_Name: SM_Veh_Exotic_01_Front_Bumper_02
   m_TagString: Untagged
@@ -18778,28 +18725,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43797347899421668, guid: 940219a9065be4949af113a3be535294, type: 2}
---- !u!64 &1434342927841601033
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7661670703774973035}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 7357061b1a5c1a642bdfe77a77956664, type: 3}
 --- !u!1 &7797851160952896515
 GameObject:
   m_ObjectHideFlags: 0
@@ -19070,7 +18995,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 25000
     damper: 1000
-    targetPosition: 0.7
+    targetPosition: 0.8
   m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0.5
   m_Mass: 80
