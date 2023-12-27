@@ -9,16 +9,21 @@ public class RaceCreator : MonoBehaviour
     public GameObject checkpointPrefab;
     public GameObject startLinePrefab;
     public GameObject endLinePrefab;
+    public GameObject carPrefab;
+    public GameObject directionPrefab;
 
     [Space]
     [Space]
     [Space]
 
+    public AreaType areaType;
     public RaceType raceType;
     public GameObject startLine;
     public List<GameObject> checkPoints;
     public GameObject endLine;
     public GameObject playStartPoint;
+    public List<GameObject> racerStartPoints;
+    public List<GameObject> directionPoints;
 
 
     public void CreateStartingPoint()
@@ -46,7 +51,33 @@ public class RaceCreator : MonoBehaviour
 
     public void CreatePlayerStartPoint()
     {
-        playStartPoint = new GameObject("Player Start Point");
+        playStartPoint = Instantiate(carPrefab, this.transform);
+    }
+
+    public void CreateRacerStartPoint()
+    {
+        GameObject ck = Instantiate(carPrefab, this.transform);
+
+        if (racerStartPoints.Count > 0)
+        {
+            ck.transform.position = racerStartPoints[racerStartPoints.Count - 1].transform.position;
+            ck.transform.rotation = racerStartPoints[racerStartPoints.Count - 1].transform.rotation;
+        }
+
+        racerStartPoints.Add(ck);
+    }
+
+    public void CreateDirectionPoint()
+    {
+        GameObject ck = Instantiate(directionPrefab, this.transform);
+
+        if (directionPoints.Count > 0)
+        {
+            ck.transform.position = directionPoints[directionPoints.Count - 1].transform.position;
+            ck.transform.rotation = directionPoints[directionPoints.Count - 1].transform.rotation;
+        }
+
+        directionPoints.Add(ck);
     }
 
     public void SaveLevel(string name = "")
@@ -78,7 +109,25 @@ public class RaceCreator : MonoBehaviour
 
         data.finishLine = new(endLine.transform.position, endLine.transform.rotation);
         data.startingLine = new(startLine.transform.position, startLine.transform.rotation);
+
+        data.playerStartPoint = new(playStartPoint.transform.position, playStartPoint.transform.rotation);
+
+        data.otherRacersStartPoint = new();
+
+        foreach (GameObject obj in racerStartPoints)
+        {
+            data.otherRacersStartPoint.Add(new(obj.transform.position, obj.transform.rotation));
+        }
+
+        data.directionPoints = new();
+
+        foreach (GameObject obj in directionPoints)
+        {
+            data.directionPoints.Add(new(obj.transform.position, obj.transform.rotation));
+        }
+
         data.raceType = raceType;
+        data.areaType = areaType;
     }
 
     public void LoadLevel()
@@ -115,6 +164,20 @@ public class RaceCreator : MonoBehaviour
 
         Destroy(endLine);
 
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Debug.DrawLine(startLine.transform.position, checkPoints[0].transform.position);
+
+        for (int i = 0; i < checkPoints.Count - 1; i++)
+        {
+            Debug.DrawLine(checkPoints[i].transform.position, checkPoints[i + 1].transform.position);
+        }
+
+        Debug.DrawLine(endLine.transform.position, checkPoints[checkPoints.Count - 1].transform.position);
     }
 
 }

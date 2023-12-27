@@ -5,12 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Race Data")]
 public class RaceData : ScriptableObject
 {
-    public CheckpointSavedData startingLine;
-    public List<CheckpointSavedData> checkPoints;
-    public CheckpointSavedData finishLine;
-    public CheckpointSavedData playerStartPoint;
-    public List<CheckpointSavedData> otherRacersStartPoint;
+    public PointSavedData startingLine;
+    public List<PointSavedData> checkPoints;
+    public PointSavedData finishLine;
+    public PointSavedData playerStartPoint;
+    public List<PointSavedData> otherRacersStartPoint;
+    public List<PointSavedData> directionPoints;
     public RaceType raceType;
+    public AreaType areaType;
 }
 
 
@@ -20,4 +22,11 @@ public enum RaceType
     Sprint,
     Circuit,
     Drift
+}
+
+public enum AreaType
+{
+    City,
+    Desert,
+    Forest
 }

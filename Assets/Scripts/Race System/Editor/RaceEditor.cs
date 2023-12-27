@@ -28,9 +28,19 @@ public class RaceEditor : Editor
             raceCreator.CreateEndingPoint();
         }
 
-        if(GUILayout.Button("Create Player Start Point"))
+        if (GUILayout.Button("Create Player Start Point"))
         {
             raceCreator.CreatePlayerStartPoint();
+        }
+
+        if (GUILayout.Button("Create Other Racer Start Point"))
+        {
+            raceCreator.CreateRacerStartPoint();
+        }
+
+        if (GUILayout.Button("Create Direction Point"))
+        {
+            raceCreator.CreateDirectionPoint();
         }
 
         if (GUILayout.Button("Save Level"))
@@ -38,7 +48,7 @@ public class RaceEditor : Editor
             raceCreator.SaveLevel();
         }
 
-        if(GUILayout.Button("Clear"))
+        if (GUILayout.Button("Clear"))
         {
             raceCreator.ClearLevel();
         }
@@ -48,5 +58,6 @@ public class RaceEditor : Editor
 
         // }
     }
+
 }
 
