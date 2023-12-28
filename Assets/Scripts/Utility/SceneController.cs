@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void PlaySolo()
+    public void PlayFreeRoam()
     {
         SceneManager.LoadSceneAsync(1);
     }
