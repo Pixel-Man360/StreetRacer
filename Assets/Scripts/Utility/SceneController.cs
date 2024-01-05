@@ -10,6 +10,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
+    public void CityTimeAttack()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
+
     public void Quit()
     {
         Application.Quit();

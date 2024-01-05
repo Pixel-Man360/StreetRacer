@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Race Data")]
 public class RaceData : ScriptableObject
 {
+    public int raceId;
     public PointSavedData startingLine;
     public List<PointSavedData> checkPoints;
     public PointSavedData finishLine;

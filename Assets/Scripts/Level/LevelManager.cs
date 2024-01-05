@@ -6,11 +6,13 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> allCars;
     [SerializeField] private Transform initPos;
-    [SerializeField] private CameraFollow cameraFollow;
+    [SerializeField] private bool isFreeRoam = true;
     public static LevelManager instance;
 
     private string carSaveHash = "Current Car";
     private int currentCar = 0;
+    private CarController currentCarController;
+    private float raceStartTime;
 
     void Awake()
     {
@@ -21,8 +23,44 @@ public class LevelManager : MonoBehaviour
     {
         currentCar = PlayerPrefs.GetInt(carSaveHash, 0);
 
-        GameObject obj = Instantiate(allCars[currentCar], initPos.position, Quaternion.identity);
+        if (isFreeRoam)
+        {
+            SpawnPlayer(initPos.position, Quaternion.identity);
+            currentCarController.SetDriveState(true);
+        }
+    }
 
-        cameraFollow.SetTarget(obj, obj.GetComponent<CarController>().GetCameraOffset().gameObject);
+    public void SetPlayerDriveState(bool val)
+    {
+        currentCarController.SetDriveState(val);
+    }
+
+    public void SpawnPlayer(Vector3 position, Quaternion rotation)
+    {
+        GameObject obj = Instantiate(allCars[currentCar], position, rotation);
+        currentCarController = obj.GetComponent<CarController>();
+        CameraFollow.instance.SetTarget(currentCarController.gameObject, currentCarController.GetCameraOffset().gameObject);
+    }
+
+    public void OnRaceStart()
+    {
+        raceStartTime = Time.time;
+    }
+
+    public void OnRaceWon(RaceType raceType)
+    {
+        switch (raceType)
+        {
+            case RaceType.TimeAttack:
+                Debug.Log("Race Won! Show Score UI And Give Rewards");
+                Debug.Log("Finish Time: " + (Time.time - raceStartTime));
+                break;
+        }
+    }
+
+    public void OnRaceLost()
+    {
+
     }
 }
+

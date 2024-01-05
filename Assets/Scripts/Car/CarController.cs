@@ -17,6 +17,9 @@ public class CarController : MonoBehaviour
     [SerializeField] private float fallspeed = 3f;
     [SerializeField] private Transform centerOfMass;
     [SerializeField] private Transform cameraOffset;
+
+    private bool canDrive = false;
+
     private float speed;
     private float speedClamped;
     private float slipAngle;
@@ -61,6 +64,11 @@ public class CarController : MonoBehaviour
     //     rpmText.text = RPM.ToString("0,000") + "rpm";
     //     gearText.text = (gearState == GearState.Neutral) ? "N" : (currentGear + 1).ToString();
     // }
+
+    public void SetDriveState(bool val)
+    {
+        canDrive = val;
+    }
 
 
 
@@ -122,6 +130,8 @@ public class CarController : MonoBehaviour
     }
     private void HandleAcceleration()
     {
+        if (!canDrive) return;
+
         if (Mathf.Abs(speed) < maxSpeed)
         {
             wheels[0].HandleAcceleration(motorPower * input.gasInput);
@@ -137,6 +147,8 @@ public class CarController : MonoBehaviour
 
     private void HandleBraking()
     {
+        if (!canDrive) return;
+
         for (int i = 0; i < wheels.Count; i++)
         {
             if (i <= 1)

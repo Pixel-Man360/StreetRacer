@@ -19251,6 +19251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8452727528735818250}
   - component: {fileID: 513093843873245722}
+  - component: {fileID: 7807552711686621221}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -19273,7 +19274,7 @@ Transform:
   - {fileID: 8078814399567376346}
   - {fileID: 6705986107876417903}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &513093843873245722
 BoxCollider:
@@ -19296,6 +19297,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 22, y: 3.9462914, z: 1}
   m_Center: {x: 0, y: 1.4731457, z: 0}
+--- !u!114 &7807552711686621221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003887439992673246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380c2cd4bd5dd4329a8a021405b5becd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPointType: 1
 --- !u!1 &6469954138350650085
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5470763141710409533}
   - component: {fileID: 2126502764638334509}
+  - component: {fileID: 9204857390024296430}
   m_Layer: 0
   m_Name: End Line
   m_TagString: Untagged
@@ -114,7 +115,7 @@ Transform:
   m_Children:
   - {fileID: 7852985971761788880}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2126502764638334509
 BoxCollider:
@@ -137,3 +138,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 22, y: 3.9462914, z: 1}
   m_Center: {x: 0, y: 1.4731457, z: 0}
+--- !u!114 &9204857390024296430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376173437561335711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380c2cd4bd5dd4329a8a021405b5becd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPointType: 2

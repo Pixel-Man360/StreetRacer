@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private CheckPointType checkPointType;
+
+    private int checkPointId;
+
+    public void SetCheckPointId(int id)
     {
-        
+        id = checkPointId;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int GetCheckPointId() => checkPointId;
+}
+
+public enum CheckPointType
+{
+    StartLine,
+    CheckPoint,
+    FinishLine
 }
