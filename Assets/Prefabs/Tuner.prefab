@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 6515859383426445677}
   smokeParticle: {fileID: 6112570148814265762}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &124813292986223178
 GameObject:
   m_ObjectHideFlags: 0
@@ -12203,6 +12205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 5992127614686473259}
   smokeParticle: {fileID: 7667848258667944425}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &4549542737983722952
 GameObject:
   m_ObjectHideFlags: 0
@@ -12547,6 +12551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 241866073647528088}
   smokeParticle: {fileID: 5970343541710249056}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &5149274446971451056
 GameObject:
   m_ObjectHideFlags: 0
@@ -13153,6 +13159,7 @@ GameObject:
   - component: {fileID: 7093210813216804034}
   - component: {fileID: 7966817818998817682}
   - component: {fileID: 2080727030330022643}
+  - component: {fileID: 1521509447634239396}
   m_Layer: 7
   m_Name: Tuner
   m_TagString: Untagged
@@ -13214,7 +13221,7 @@ MonoBehaviour:
   - {fileID: 7828016087475075144}
   - {fileID: 400609439368901324}
   - {fileID: 3405014408468248799}
-  maxSpeed: 350
+  maxSpeed: 210
   motorPower: 2000
   brakePower: 5000
   steerCurve:
@@ -13244,30 +13251,54 @@ MonoBehaviour:
   fallspeed: 1.15
   centerOfMass: {fileID: 2036071028519928724}
   cameraOffset: {fileID: 4280810088412266984}
-  RPM: 0
-  redLine: 0
-  idleRPM: 0
-  rpmText: {fileID: 0}
-  gearText: {fileID: 0}
-  rpmNeedle: {fileID: 0}
-  minNeedleRotation: 0
-  maxNeedleRotation: 0
-  currentGear: 0
-  gearRatios: []
-  differentialRatio: 0
+  redLine: 6500
+  idleRPM: 800
+  minNeedleRotation: 225
+  maxNeedleRotation: -45
+  gearRatios:
+  - 3
+  - 2.5
+  - 2
+  - 1.5
+  - 1
+  - 0.8
+  differentialRatio: 4
   hpToRPMCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.48947975
+      outSlope: 0.48947975
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.25245702
+    - serializedVersion: 3
+      time: 1.0012028
+      value: 1.006563
+      inSlope: 0.4055022
+      outSlope: 0.4055022
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1.0503082
+      value: -0.00044691563
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  increaseGearRPM: 0
-  decreaseGearRPM: 0
+  increaseGearRPM: 6000
+  decreaseGearRPM: 3600
   changeGearTime: 0.5
-  tireTrail: {fileID: 0}
-  brakeMaterial: {fileID: 0}
-  brakingColor: {r: 0, g: 0, b: 0, a: 0}
-  brakeColorIntensity: 0
   isEngineRunning: 0
 --- !u!114 &7966817818998817682
 MonoBehaviour:
@@ -13320,6 +13351,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &1521509447634239396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659641961126490442}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.58, y: 1.4424981, z: 5.643363}
+  m_Center: {x: 0, y: -0.039711416, z: -0.031681538}
 --- !u!1 &6704044404797896495
 GameObject:
   m_ObjectHideFlags: 0
@@ -19540,6 +19592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 4968248742895311310}
   smokeParticle: {fileID: 139180502209582536}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &8853611360751606470
 GameObject:
   m_ObjectHideFlags: 0

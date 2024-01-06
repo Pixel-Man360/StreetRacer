@@ -7,6 +7,10 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text goText;
+    
+    [SerializeField] private TMP_Text rpmText;
+    [SerializeField] private TMP_Text gearText;
+    [SerializeField] private Transform rpmNeedle;
     public static UIManager instance;
 
     void Awake()
@@ -26,5 +30,20 @@ public class UIManager : MonoBehaviour
                 goText.gameObject.SetActive(false);
             }
         );
+    }
+
+    public void SetNeedleRotation(Quaternion rot)
+    {
+        rpmNeedle.rotation = rot;
+    }
+
+    public void SetRpmText(string txt) 
+    {
+        rpmText.text = txt;
+    }
+
+    public void SetGearText(string txt) 
+    {
+        gearText.text = txt;
     }
 }
