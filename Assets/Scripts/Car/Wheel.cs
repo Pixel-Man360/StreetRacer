@@ -9,11 +9,18 @@ public class Wheel : MonoBehaviour
 {
     [SerializeField] private WheelCollider wheelCollider;
     [SerializeField] private ParticleSystem smokeParticle;
+    [SerializeField] private TrailRenderer trailPrefab;
+
+    private TrailRenderer trailRenderer;
+
+    void Start()
+    {
+        trailRenderer = Instantiate(trailPrefab, transform.position - Vector3.up * wheelCollider.radius, Quaternion.identity, transform.parent);
+    }
 
 
     void Update()
     {
-
         Vector3 position;
         Quaternion rotation;
 
@@ -39,6 +46,11 @@ public class Wheel : MonoBehaviour
         wheelCollider.brakeTorque = power;
     }
 
+    internal void ApplyMotorTorque(float torque)
+    {
+        wheelCollider.motorTorque = torque;
+    }
+
     internal void SetSmoke()
     {
         wheelCollider.GetGroundHit(out WheelHit hit);
@@ -48,11 +60,13 @@ public class Wheel : MonoBehaviour
         if (Mathf.Abs(hit.sidewaysSlip) + Mathf.Abs(hit.forwardSlip) > slipAllowance)
         {
             smokeParticle.Play();
+            trailRenderer.emitting = true;
         }
 
         else
         {
             smokeParticle.Stop();
+            trailRenderer.emitting = false;
         }
     }
 

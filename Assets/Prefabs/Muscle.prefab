@@ -5525,6 +5525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 5469310171838148035}
   smokeParticle: {fileID: 6784501656686054428}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &500501785550390664
 GameObject:
   m_ObjectHideFlags: 0
@@ -11036,6 +11038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 1997289622779021719}
   smokeParticle: {fileID: 6537610387402875360}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &2567719403734183415
 GameObject:
   m_ObjectHideFlags: 0
@@ -17020,6 +17024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 7014218787518189744}
   smokeParticle: {fileID: 2762028213043908879}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &4748509233817046853
 GameObject:
   m_ObjectHideFlags: 0
@@ -17067,6 +17073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 3443571646316479551}
   smokeParticle: {fileID: 5913046250962720998}
+  trailPrefab: {fileID: 251622701255187976, guid: 15e3c43cddcc2fe4fa3bd70c2f0db61d,
+    type: 3}
 --- !u!1 &5130207755538242084
 GameObject:
   m_ObjectHideFlags: 0
@@ -22757,6 +22765,7 @@ GameObject:
   - component: {fileID: 7093210813216804034}
   - component: {fileID: 7966817818998817682}
   - component: {fileID: 2080727030330022643}
+  - component: {fileID: 5846053980723942048}
   m_Layer: 7
   m_Name: Muscle
   m_TagString: Untagged
@@ -22848,30 +22857,54 @@ MonoBehaviour:
   fallspeed: 1.2
   centerOfMass: {fileID: 2036071028519928724}
   cameraOffset: {fileID: 4280810088412266984}
-  RPM: 0
-  redLine: 0
-  idleRPM: 0
-  rpmText: {fileID: 0}
-  gearText: {fileID: 0}
-  rpmNeedle: {fileID: 0}
-  minNeedleRotation: 0
-  maxNeedleRotation: 0
-  currentGear: 0
-  gearRatios: []
-  differentialRatio: 0
+  redLine: 6500
+  idleRPM: 800
+  minNeedleRotation: 225
+  maxNeedleRotation: -45
+  gearRatios:
+  - 3
+  - 2.5
+  - 2
+  - 1.5
+  - 1
+  - 0.8
+  differentialRatio: 4
   hpToRPMCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.48947975
+      outSlope: 0.48947975
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.25245702
+    - serializedVersion: 3
+      time: 1.0012028
+      value: 1.006563
+      inSlope: 0.4055022
+      outSlope: 0.4055022
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1.0503082
+      value: -0.00044691563
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  increaseGearRPM: 0
-  decreaseGearRPM: 0
+  increaseGearRPM: 5800
+  decreaseGearRPM: 3500
   changeGearTime: 0.5
-  tireTrail: {fileID: 0}
-  brakeMaterial: {fileID: 0}
-  brakingColor: {r: 0, g: 0, b: 0, a: 0}
-  brakeColorIntensity: 0
   isEngineRunning: 0
 --- !u!114 &7966817818998817682
 MonoBehaviour:
@@ -22924,6 +22957,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &5846053980723942048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659641961126490442}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.58, y: 1.4424981, z: 6.0516577}
+  m_Center: {x: 0, y: -0.039711416, z: -0.23582888}
 --- !u!1 &6704044404797896495
 GameObject:
   m_ObjectHideFlags: 0

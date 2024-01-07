@@ -18,6 +18,8 @@ public class RaceManager : MonoBehaviour
     private CheckPoint endLine;
     private List<CheckPoint> checkPoints = new();
     private CheckPoint currentCheckPoint;
+
+    private int ckId;
     public static RaceManager instance;
 
     void Awake()
@@ -88,7 +90,7 @@ public class RaceManager : MonoBehaviour
         return null;
     }
 
-    private void UpdateCheckPoint(CheckPoint enteredPoint)
+    public void UpdateCheckPoint(CheckPoint enteredPoint)
     {
         if (currentCheckPoint.GetCheckPointId() != enteredPoint.GetCheckPointId()) return;
 
@@ -105,8 +107,10 @@ public class RaceManager : MonoBehaviour
 
         else
         {
-            GetCheckPointById(enteredPoint.GetCheckPointId() + 1);
+            currentCheckPoint = GetCheckPointById(enteredPoint.GetCheckPointId() + 1);
         }
+
+        ckId = currentCheckPoint.GetCheckPointId();
     }
 
     private CheckPoint GetCheckPointById(int id)
