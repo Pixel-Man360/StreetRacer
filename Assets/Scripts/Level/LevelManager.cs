@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
         switch (raceType)
         {
             case RaceType.TimeAttack:
+                currentCarController.SetDriveState(false);
                 Debug.Log("Race Won! Show Score UI And Give Rewards");
                 Debug.Log("Finish Time: " + (Time.time - raceStartTime));
                 break;
