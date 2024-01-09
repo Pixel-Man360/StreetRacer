@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text rpmText;
     [SerializeField] private TMP_Text gearText;
     [SerializeField] private Transform rpmNeedle;
+    [SerializeField] private Timer timer;
     public static UIManager instance;
 
     void Awake()
@@ -45,5 +46,10 @@ public class UIManager : MonoBehaviour
     public void SetGearText(string txt) 
     {
         gearText.text = txt;
+    }
+
+    public void SetTimer(float maxTime)
+    {
+        timer.SetTimer(maxTime);
     }
 }

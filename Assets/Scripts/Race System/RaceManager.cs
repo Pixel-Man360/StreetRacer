@@ -73,7 +73,7 @@ public class RaceManager : MonoBehaviour
     {
         LevelManager.instance.SetPlayerDriveState(true);
         UIManager.instance.ShowGoText();
-        LevelManager.instance.OnRaceStart();
+        LevelManager.instance.OnRaceStart(currentRaceData);
         SoundManager.instance.PlaySound(1);
     }
 

@@ -42,9 +42,16 @@ public class LevelManager : MonoBehaviour
         CameraFollow.instance.SetTarget(currentCarController.gameObject, currentCarController.GetCameraOffset().gameObject);
     }
 
-    public void OnRaceStart()
+    public void OnRaceStart(RaceData raceData)
     {
         raceStartTime = Time.time;
+
+        switch(raceData.raceType)
+        {
+            case RaceType.TimeAttack:
+            UIManager.instance.SetTimer(raceData.raceTime);
+            break;
+        }
     }
 
     public void OnRaceWon(RaceType raceType)
