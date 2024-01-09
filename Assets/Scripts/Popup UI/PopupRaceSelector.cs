@@ -27,4 +27,9 @@ public class PopupRaceSelector : PopupBase
     {
 
     }
+
+    public void OnRaceSelected()
+    {
+        Loader.ChangeScene(3);
+    }
 }
