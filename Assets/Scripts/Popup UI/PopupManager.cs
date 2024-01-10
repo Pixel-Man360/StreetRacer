@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PopupManager : MonoBehaviour
 {
+    public PopupLevelLost popupLevelLost;
     public PopupRaceEnd popupRaceEnd;
     public PopupPauseMenu popupPauseMenu;
     public SettingsPopup settingsPopup;

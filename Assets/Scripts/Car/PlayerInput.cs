@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private CarController carController;
     internal float steerInput = 0;
     internal float gasInput = 0;
 
@@ -11,5 +12,7 @@ public class PlayerInput : MonoBehaviour
     {
         steerInput = Input.GetAxis("Horizontal");
         gasInput = Input.GetAxis("Vertical");
+
+        carController.SetInput(gasInput, steerInput, 0, 0);
     }
 }

@@ -14,6 +14,7 @@ public class RaceData : ScriptableObject
     public List<PointSavedData> directionPoints;
     public RaceType raceType;
     public AreaType areaType;
+    public List<int> rewardsPerPosition;
 
     [Space]
     [Header("For Time Attack Mode:")]

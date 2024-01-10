@@ -7,10 +7,11 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text goText;
-    
     [SerializeField] private TMP_Text rpmText;
     [SerializeField] private TMP_Text gearText;
     [SerializeField] private Transform rpmNeedle;
+    [SerializeField] private TMP_Text levelEndText;
+    [SerializeField] private TophudMoneyCount tophudMoneyCount;
     [SerializeField] private Timer timer;
     public static UIManager instance;
 
@@ -33,17 +34,32 @@ public class UIManager : MonoBehaviour
         );
     }
 
+    public void ShowLevelEndText(string text)
+    {
+        levelEndText.gameObject.SetActive(true);
+        levelEndText.SetText(text);
+        levelEndText.rectTransform.DOAnchorPosY(200f, 1f).OnComplete
+        (
+            () =>
+            {
+                levelEndText.rectTransform.anchoredPosition3D = Vector3.zero;
+                levelEndText.gameObject.SetActive(false);
+            }
+        );
+
+    }
+
     public void SetNeedleRotation(Quaternion rot)
     {
         rpmNeedle.rotation = rot;
     }
 
-    public void SetRpmText(string txt) 
+    public void SetRpmText(string txt)
     {
         rpmText.text = txt;
     }
 
-    public void SetGearText(string txt) 
+    public void SetGearText(string txt)
     {
         gearText.text = txt;
     }
@@ -51,5 +67,15 @@ public class UIManager : MonoBehaviour
     public void SetTimer(float maxTime)
     {
         timer.SetTimer(maxTime);
+    }
+
+    public void HideTimer()
+    {
+        timer.StopTimer();
+    }
+
+    public void UpdateTopHudMoneyCount(int amount)
+    {
+        tophudMoneyCount.UpdateCashAmount(amount);
     }
 }

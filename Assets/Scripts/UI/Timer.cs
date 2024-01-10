@@ -7,15 +7,23 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     private bool canStartTimer = false;
+
     private float remainingTime;
+
 
 
     void Update()
     {
-        if(!canStartTimer) return;
+        if (!canStartTimer) return;
 
 
         CountDown();
+    }
+
+    public void StopTimer()
+    {
+        canStartTimer = false;
+        timerText.gameObject.SetActive(false);
     }
 
     public void SetTimer(float maxTime)
@@ -31,20 +39,21 @@ public class Timer : MonoBehaviour
 
         canStartTimer = true;
 
-        
+
         SetTimerText();
 
     }
 
     private void CountDown()
     {
-        if(remainingTime > 0)
+        if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
         }
 
-        else 
+        else
         {
+            canStartTimer = false;
             OnTimerEnd();
         }
 
@@ -61,6 +70,6 @@ public class Timer : MonoBehaviour
 
     private void OnTimerEnd()
     {
-
+        LevelManager.instance.OnRaceLost();
     }
 }

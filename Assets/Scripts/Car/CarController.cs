@@ -6,7 +6,6 @@ using TMPro;
 
 public class CarController : MonoBehaviour, IPlayer
 {
-    [SerializeField] private PlayerInput input;
     [SerializeField] private EngineAudio engineAudio;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private List<Wheel> wheels;
@@ -14,6 +13,8 @@ public class CarController : MonoBehaviour, IPlayer
     [SerializeField] private float motorPower;
     [SerializeField] private float brakePower;
     [SerializeField] private AnimationCurve steerCurve;
+    [SerializeField] private float maxSteering = 90f;
+    [SerializeField] private float minSteering = -90f;
     [SerializeField] private float fallspeed = 3f;
     [SerializeField] private Transform centerOfMass;
     [SerializeField] private Transform cameraOffset;
@@ -32,6 +33,8 @@ public class CarController : MonoBehaviour, IPlayer
     private bool canDrive = false;
     private bool isReversing = false;
     private int currentGear;
+    private float steerInput;
+    private float gasInput;
     private float rpm;
     private float speed;
     private float speedClamped;
@@ -40,9 +43,9 @@ public class CarController : MonoBehaviour, IPlayer
     private float currentTorque;
     private float clutch;
     private float wheelRPM;
-    
+
     private GearState gearState;
-    
+
 
     void Start()
     {
@@ -51,7 +54,7 @@ public class CarController : MonoBehaviour, IPlayer
     }
     void OnCollisionEnter(Collision other)
     {
-        if(rb.velocity.magnitude >= 100f)
+        if (rb.velocity.magnitude >= 15f)
         {
             SoundManager.instance.PlaySound(2);
         }
@@ -73,19 +76,15 @@ public class CarController : MonoBehaviour, IPlayer
 
     void FixedUpdate()
     {
-        if(!canDrive) return; 
-        
+
         speed = wheels[2].GetRPM() * wheels[2].GetRadius() * 2f * Mathf.PI / 10f;
         speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
-        
+
         ApplyMotor();
-        SetClutch();
         CheckEngineAudio();
-        CheckSlip();
         CheckSmokeParticles();
         HandleAcceleration();
         HandleBraking();
-        HandleSteering();
     }
 
     private void SetClutch()
@@ -96,7 +95,7 @@ public class CarController : MonoBehaviour, IPlayer
             if (gearState == GearState.Neutral)
             {
                 clutch = 0;
-                if (Mathf.Abs(input.gasInput) > 0) gearState = GearState.Running;
+                if (Mathf.Abs(gasInput) > 0) gearState = GearState.Running;
             }
             else
             {
@@ -111,12 +110,12 @@ public class CarController : MonoBehaviour, IPlayer
 
     private void CheckEngineAudio()
     {
-        if (Mathf.Abs(input.gasInput) > 0 && isEngineRunning == 0)
+        if (Mathf.Abs(gasInput) > 0 && isEngineRunning == 0)
         {
             engineAudio.StartEngine();
         }
 
-        else if (input.gasInput == 0)
+        else if (gasInput == 0)
         {
             if (Mathf.Abs(GetSpeedRatio()) <= 0.05f)
             {
@@ -130,13 +129,13 @@ public class CarController : MonoBehaviour, IPlayer
         slipAngle = Vector3.Angle(transform.forward, rb.velocity - transform.forward);
         float movingDirection = Vector3.Dot(transform.forward, rb.velocity);
 
-        if (movingDirection < -0.5f && input.gasInput > 0)
+        if (movingDirection < -0.5f && gasInput > 0)
         {
-            brakeInput = Mathf.Abs(input.gasInput);
+            brakeInput = Mathf.Abs(gasInput);
         }
-        else if (movingDirection > 0.5f && input.gasInput < 0)
+        else if (movingDirection > 0.5f && gasInput < 0)
         {
-            brakeInput = Mathf.Abs(input.gasInput);
+            brakeInput = Mathf.Abs(gasInput);
         }
         else
         {
@@ -153,25 +152,25 @@ public class CarController : MonoBehaviour, IPlayer
         }
     }
 
-    void ApplyMotor() 
+    void ApplyMotor()
     {
-        if(input.gasInput < 0)
+        if (gasInput < 0)
         {
-            wheels[2].ApplyMotorTorque(currentTorque / 5f * input.gasInput);
-            wheels[3].ApplyMotorTorque(currentTorque / 5f * input.gasInput);
+            wheels[2].ApplyMotorTorque(currentTorque / 5f * gasInput);
+            wheels[3].ApplyMotorTorque(currentTorque / 5f * gasInput);
 
             return;
         }
 
         currentTorque = CalculateTorque();
-        wheels[2].ApplyMotorTorque(currentTorque * input.gasInput);
-        wheels[3].ApplyMotorTorque(currentTorque * input.gasInput);
+        wheels[2].ApplyMotorTorque(currentTorque * gasInput);
+        wheels[3].ApplyMotorTorque(currentTorque * gasInput);
     }
 
     float CalculateTorque()
     {
         float torque = 0;
-        if (rpm < idleRPM + 200 && input.gasInput == 0 && currentGear == 0)
+        if (rpm < idleRPM + 200 && gasInput == 0 && currentGear == 0)
         {
             gearState = GearState.Neutral;
         }
@@ -192,7 +191,7 @@ public class CarController : MonoBehaviour, IPlayer
         {
             if (clutch < 0.1f)
             {
-                rpm = Mathf.Lerp(rpm, Mathf.Max(idleRPM, redLine * input.gasInput) + UnityEngine.Random.Range(-50, 50), Time.deltaTime);
+                rpm = Mathf.Lerp(rpm, Mathf.Max(idleRPM, redLine * gasInput) + UnityEngine.Random.Range(-50, 50), Time.deltaTime);
             }
             else
             {
@@ -235,37 +234,37 @@ public class CarController : MonoBehaviour, IPlayer
             currentGear += gearChange;
         }
 
-        if(gearState!=GearState.Neutral)
-        gearState = GearState.Running;
+        if (gearState != GearState.Neutral)
+            gearState = GearState.Running;
     }
 
     private void HandleAcceleration()
     {
-        if (!canDrive) return;
+        //if (!canDrive) return;
 
-        if(input.gasInput < 0)
+        if (gasInput < 0)
         {
             isReversing = true;
             currentGear = 0;
             rpm = idleRPM;
         }
 
-        else  
+        else
         {
             isReversing = false;
         }
 
         if (Mathf.Abs(speed) < maxSpeed)
         {
-            if(input.gasInput < 0)
+            if (gasInput < 0)
             {
-                wheels[0].HandleAcceleration(motorPower / 3f * input.gasInput);
-                wheels[1].HandleAcceleration(motorPower / 3f * input.gasInput);
+                wheels[0].HandleAcceleration(motorPower / 3f * gasInput);
+                wheels[1].HandleAcceleration(motorPower / 3f * gasInput);
                 return;
             }
 
-            wheels[0].HandleAcceleration(motorPower * input.gasInput);
-            wheels[1].HandleAcceleration(motorPower * input.gasInput);
+            wheels[0].HandleAcceleration(motorPower * gasInput);
+            wheels[1].HandleAcceleration(motorPower * gasInput);
         }
         else
         {
@@ -277,9 +276,9 @@ public class CarController : MonoBehaviour, IPlayer
 
     private void HandleBraking()
     {
-        if (!canDrive) return;
+       // if (!canDrive) return;
 
-        if(brakeInput > 0)
+        if (brakeInput > 0)
         {
             currentGear = 0;
             rpm = idleRPM;
@@ -300,18 +299,35 @@ public class CarController : MonoBehaviour, IPlayer
         }
     }
 
-    private void HandleSteering()
+    private void HandleSteering(float steeringAngle)
     {
-        float steeringAngle = input.steerInput * steerCurve.Evaluate(speed);
+        if (slipAngle < 120f)
+        {
+            steeringAngle += Vector3.SignedAngle(transform.forward, rb.velocity + transform.forward, Vector3.up);
+        }
+        steeringAngle = Mathf.Clamp(steeringAngle, minSteering, maxSteering);
 
         wheels[0].ApplySteerAngle(steeringAngle);
         wheels[1].ApplySteerAngle(steeringAngle);
     }
 
+    public void SetInput(float throttleIn, float steeringIn, float clutchIn, float handbrakeIn)
+    {
+        if (!canDrive) return;
+
+        gasInput = throttleIn;
+        steerInput = steeringIn * steerCurve.Evaluate(speed);
+
+        HandleSteering(steerInput);
+
+        CheckSlip();
+        SetClutch();
+    }
+
 
     internal float GetSpeedRatio()
     {
-        float gas = Mathf.Clamp(Mathf.Abs(input.gasInput), 0.5f, 1f);
+        float gas = Mathf.Clamp(Mathf.Abs(gasInput), 0.5f, 1f);
         return speedClamped * gas / maxSpeed;
     }
 
@@ -321,7 +337,7 @@ public class CarController : MonoBehaviour, IPlayer
     }
 }
 
-   
+
 
 
 public enum GearState

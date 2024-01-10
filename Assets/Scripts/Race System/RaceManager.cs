@@ -128,4 +128,9 @@ public class RaceManager : MonoBehaviour
 
         return endLine;
     }
+
+    public RaceData GetRaceData() 
+    {
+        return currentRaceData;
+    }
 }
