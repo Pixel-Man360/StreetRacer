@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour, IPlayer
     private float steerInput;
     private float gasInput;
     private float rpm;
-    private float speed;
+    public float speed { get; set; }
     private float speedClamped;
     private float slipAngle;
     private float brakeInput;
@@ -276,7 +276,7 @@ public class CarController : MonoBehaviour, IPlayer
 
     private void HandleBraking()
     {
-       // if (!canDrive) return;
+        // if (!canDrive) return;
 
         if (brakeInput > 0)
         {

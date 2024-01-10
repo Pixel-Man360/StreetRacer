@@ -43,7 +43,7 @@ MonoBehaviour:
     position: {x: 959, y: 16.8, z: -537}
     rotation: {x: -0, y: -0.74113667, z: -0, w: 0.6713542}
   playerStartPoint:
-    position: {x: 454.87997, y: 1.4, z: -5.350006}
+    position: {x: 454.88, y: 1.4, z: -5.350006}
     rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   otherRacersStartPoint: []
   directionPoints:

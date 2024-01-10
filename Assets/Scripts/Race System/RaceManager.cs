@@ -9,6 +9,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] CheckPoint endLinePrefab;
     [SerializeField] GameObject directionPrefab;
     [SerializeField] private List<RaceData> allRaceData;
+    [SerializeField] private List<AiCarController> aiRaceCars;
 
     private string currentRaceHash = "Current Race Id";
     private int currentRaceId;
@@ -18,9 +19,12 @@ public class RaceManager : MonoBehaviour
     private CheckPoint endLine;
     private List<CheckPoint> checkPoints = new();
     private CheckPoint currentCheckPoint;
-
+    private List<AiCarController> raceCarsSpawned = new();
     private int ckId;
+    private int aiEnteredPoints = 0;
     public static RaceManager instance;
+
+
 
     void Awake()
     {
@@ -66,6 +70,14 @@ public class RaceManager : MonoBehaviour
 
         LevelManager.instance.SpawnPlayer(currentRaceData.playerStartPoint.position, currentRaceData.playerStartPoint.rotation);
 
+        foreach (PointSavedData data in currentRaceData.otherRacersStartPoint)
+        {
+            AiCarController aiCarController = Instantiate(aiRaceCars[UnityEngine.Random.Range(0, aiRaceCars.Count)], data.position, data.rotation);
+            raceCarsSpawned.Add(aiCarController);
+            aiCarController.SetDrivingState(AIState.Idle);
+            aiCarController.SetCurrentCheckPoint(startLine);
+        }
+
         CameraFollow.instance.PanToPlayer(StartLevel);
     }
 
@@ -75,6 +87,14 @@ public class RaceManager : MonoBehaviour
         UIManager.instance.ShowGoText();
         LevelManager.instance.OnRaceStart(currentRaceData);
         SoundManager.instance.PlaySound(1);
+    }
+
+    public void OnSprintStarted()
+    {
+        foreach (AiCarController aiCarController in raceCarsSpawned)
+        {
+            aiCarController.SetDrivingState(AIState.Driving);
+        }
     }
 
     private RaceData GetRaceDataById(int id)
@@ -113,6 +133,27 @@ public class RaceManager : MonoBehaviour
         ckId = currentCheckPoint.GetCheckPointId();
     }
 
+    public void OnAIEnteredCheckPoint(CheckPoint enteredPoint, AiCarController aiCarController)
+    {
+        if (aiCarController.GetCurrentCheckPoint().GetCheckPointId() != enteredPoint.GetCheckPointId()) return;
+        if (aiCarController.GetCurrentCheckPoint().GetCheckPointId() == startLine.GetCheckPointId())
+        {
+            aiCarController.SetCurrentCheckPoint(checkPoints[0]);
+        }
+
+        else if (aiCarController.GetCurrentCheckPoint().GetCheckPointId() == endLine.GetCheckPointId())
+        {
+            aiCarController.OnRaceWon();
+            aiCarController.SetDrivingState(AIState.Idle);
+            aiEnteredPoints++;
+        }
+
+        else
+        {
+            aiCarController.SetCurrentCheckPoint(GetCheckPointById(enteredPoint.GetCheckPointId() + 1));
+        }
+    }
+
     private CheckPoint GetCheckPointById(int id)
     {
         if (id != checkPoints.Count)
@@ -129,8 +170,13 @@ public class RaceManager : MonoBehaviour
         return endLine;
     }
 
-    public RaceData GetRaceData() 
+    public RaceData GetRaceData()
     {
         return currentRaceData;
+    }
+
+    public int GetPlayerPoisition()
+    {
+        return aiEnteredPoints + 1;
     }
 }

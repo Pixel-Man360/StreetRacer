@@ -9,9 +9,14 @@ public class CheckPoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<IPlayer>() != null)
+        if (other.GetComponent<IPlayer>() != null)
         {
             RaceManager.instance.UpdateCheckPoint(this);
+        }
+
+        else if (other.GetComponent<IAICar>() != null)
+        {
+            RaceManager.instance.OnAIEnteredCheckPoint(this, other.GetComponent<IAICar>().GetAI());
         }
     }
 

@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     private float raceStartTime;
     private int currentReward;
 
+    private RaceType wonRaceType;
+
     private EconomyData economyData;
 
     void Awake()
@@ -80,14 +82,23 @@ public class LevelManager : MonoBehaviour
             case RaceType.TimeAttack:
                 UIManager.instance.SetTimer(raceData.raceTime);
                 break;
+
+            case RaceType.Sprint:
+                RaceManager.instance.OnSprintStarted();
+                break;
         }
     }
 
     public void OnRaceWon(RaceType raceType)
     {
+        wonRaceType = raceType;
         switch (raceType)
         {
             case RaceType.TimeAttack:
+                StartCoroutine(LevelWonSequence());
+                break;
+
+            case RaceType.Sprint:
                 StartCoroutine(LevelWonSequence());
                 break;
         }
@@ -109,7 +120,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnRewardsGiven()
     {
-        PopupManager.GetInstance().popupRaceEnd.SetTexts(Time.time - raceStartTime, "1", currentReward.ToString());
+        PopupManager.GetInstance().popupRaceEnd.SetTexts(Time.time - raceStartTime, "1", (wonRaceType == RaceType.TimeAttack) ? currentReward.ToString() : RaceManager.instance.GetPlayerPoisition().ToString());
         PopupManager.GetInstance().popupRaceEnd.ShowView();
     }
 

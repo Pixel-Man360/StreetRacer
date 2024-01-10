@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6dd2697c2a74768bf18f2c6b2c201f, type: 3}
+  m_Name: Desert_Sprint
+  m_EditorClassIdentifier: 
+  raceId: 4
+  startingLine:
+    position: {x: 461.1, y: 0.29, z: -5.699997}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  checkPoints:
+  - position: {x: 583.2, y: 0.29, z: 9.599998}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 721, y: 0.29, z: 1}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 869, y: 0.29, z: 8}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 930.6, y: 0.29, z: 26.900002}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 1053, y: 3.8, z: 4}
+    rotation: {x: -0, y: 0.8105531, z: -0, w: 0.5856652}
+  - position: {x: 1179.9, y: 11.4, z: -40.5}
+    rotation: {x: -0, y: 0.8105531, z: -0, w: 0.5856652}
+  - position: {x: 1199.2, y: 11.4, z: -87.100006}
+    rotation: {x: -0, y: 0.99933165, z: -0, w: 0.036556564}
+  - position: {x: 1206, y: 11.4, z: -173}
+    rotation: {x: -0, y: 0.99933165, z: -0, w: 0.036556564}
+  - position: {x: 1209, y: 11.4, z: -286}
+    rotation: {x: -0, y: 0.99933165, z: -0, w: 0.036556564}
+  - position: {x: 1212, y: 11.4, z: -393}
+    rotation: {x: -0, y: 0.99933165, z: -0, w: 0.036556564}
+  - position: {x: 1150, y: 11.4, z: -489}
+    rotation: {x: -0, y: 0.83388585, z: -0, w: -0.5519369}
+  finishLine:
+    position: {x: 959, y: 16.8, z: -537}
+    rotation: {x: -0, y: -0.74113667, z: -0, w: 0.6713542}
+  playerStartPoint:
+    position: {x: 449.3, y: 1.4, z: -5.350006}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  otherRacersStartPoint:
+  - position: {x: 449.3, y: 1.4, z: 0.1}
+    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  - position: {x: 449.3, y: 1.4, z: -11.1}
+    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  directionPoints:
+  - position: {x: 593.7, y: 0.15, z: 24.099998}
+    rotation: {x: -0, y: 0.6923461, z: -0, w: 0.72156566}
+  - position: {x: 616.2, y: 1.17, z: 6.9000015}
+    rotation: {x: -0, y: 0.73604155, z: -0, w: 0.6769364}
+  - position: {x: 747.23, y: 2.5, z: -9.199997}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 758, y: 2.3, z: -9.199997}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  - position: {x: 860, y: 1.29, z: 19}
+    rotation: {x: -0, y: 0.54913247, z: -0, w: 0.8357354}
+  raceType: 1
+  areaType: 1
+  rewardsPerPosition: dc050000e8030000f4010000
+  raceTime: 60
