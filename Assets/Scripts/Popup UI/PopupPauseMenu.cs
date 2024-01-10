@@ -39,7 +39,7 @@ public class PopupPauseMenu : PopupBase
     public void MainMenu()
     {
         this.HideView();
-        Loader.ChangeScene(1);
+        Loader.ChangeScene(0);
     }
 
    
