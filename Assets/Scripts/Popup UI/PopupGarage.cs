@@ -66,4 +66,9 @@ public class PopupGarage : PopupBase
         currentXPos = currentCar * -20;
         carsHolder.transform.position = new(currentXPos, 0, 0);
     }
+
+    public void OnFreeRoamClicked()
+    {
+        Loader.ChangeScene(2);
+    }
 }

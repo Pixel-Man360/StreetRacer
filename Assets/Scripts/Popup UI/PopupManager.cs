@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PopupManager : MonoBehaviour
 {
+    public PopupLevelLost popupLevelLost;
+    public PopupRaceEnd popupRaceEnd;
+    public PopupPauseMenu popupPauseMenu;
     public SettingsPopup settingsPopup;
 
     private static PopupManager instance;
     private Stack<IDeviceBackButtonInterface> allPopups;
+
+    private bool isPaused = false;
 
 
     private void Awake()
@@ -97,11 +102,23 @@ public class PopupManager : MonoBehaviour
     //     this.popupGeneric.ShowView();
     // }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            this.Pop();
+            if(!isPaused)
+            {
+                isPaused = true;
+
+                popupPauseMenu.ShowView();
+            }
+
+            else  
+            {
+                isPaused = false;
+
+                popupPauseMenu.HideView();
+            }
         }
     }
 

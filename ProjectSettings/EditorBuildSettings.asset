@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: a477976a6ff8342f2b2aaa240cca17af
   - enabled: 1
-    path: Assets/Scenes/City Level.unity
+    path: Assets/Scenes/Loader.unity
+    guid: 329a6a4da29a6cd4da6b679ac8df5adf
+  - enabled: 1
+    path: Assets/Scenes/FreeRoam.unity
     guid: 7430a4a8a68e34c36b20d508f9868138
+  - enabled: 1
+    path: Assets/Scenes/Race Level.unity
+    guid: f9da747e016f04273aa6ce10dda4eb8e
   m_configObjects: {}
