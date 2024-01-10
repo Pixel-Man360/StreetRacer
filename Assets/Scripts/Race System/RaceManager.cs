@@ -45,6 +45,8 @@ public class RaceManager : MonoBehaviour
 
         int currentCheckpointId = 0;
 
+        Debug.LogError(currentRaceData);
+
         startLine = Instantiate(startLinePrefab, currentRaceData.startingLine.position, currentRaceData.startingLine.rotation);
         startLine.SetCheckPointId(currentCheckpointId);
 

@@ -17858,14 +17858,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6065209715728148000}
+  - component: {fileID: 3123191073444391125}
   - component: {fileID: 7093210813216804034}
   - component: {fileID: 7966817818998817682}
   - component: {fileID: 2080727030330022643}
   - component: {fileID: 2111844509686596073}
-  - component: {fileID: 3123191073444391125}
   m_Layer: 7
   m_Name: Exotic
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17892,6 +17892,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3123191073444391125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659641961126490442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf55bea8d0824d72a0ee5012fa6a360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gasDampen: 1
+  maximumAngle: 90
+  maximumSpeed: 370
 --- !u!114 &7093210813216804034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18062,23 +18077,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.58, y: 1.1218948, z: 5.489234}
-  m_Center: {x: 0, y: 0.12059021, z: 0.045382977}
---- !u!114 &3123191073444391125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659641961126490442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf55bea8d0824d72a0ee5012fa6a360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gasDampen: 0
-  maximumAngle: 90
-  maximumSpeed: 380
+  m_Size: {x: 2.58, y: 1.4411888, z: 6.0727234}
+  m_Center: {x: 0, y: -0.039056778, z: 0.057754517}
 --- !u!1 &6697382991741667937
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,13 +52,6 @@ public class CarController : MonoBehaviour, IPlayer
         Physics.gravity = new Vector3(0, Physics.gravity.y * fallspeed, 0);
         rb.centerOfMass = centerOfMass.transform.localPosition;
     }
-    void OnCollisionEnter(Collision other)
-    {
-        if (rb.velocity.magnitude >= 15f)
-        {
-            SoundManager.instance.PlaySound(2);
-        }
-    }
 
     void Update()
     {

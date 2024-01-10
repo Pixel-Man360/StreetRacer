@@ -22768,7 +22768,7 @@ GameObject:
   - component: {fileID: 5846053980723942048}
   m_Layer: 7
   m_Name: Muscle
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22807,9 +22807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf55bea8d0824d72a0ee5012fa6a360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasDampen: 0
-  maximumAngle: 45
-  maximumSpeed: 250
+  gasDampen: 1
+  maximumAngle: 90
+  maximumSpeed: 270
 --- !u!114 &7093210813216804034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22980,8 +22980,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.58, y: 1.1444285, z: 6.0516577}
-  m_Center: {x: 0, y: 0.10932338, z: -0.23582888}
+  m_Size: {x: 2.58, y: 1.283805, z: 6.469818}
+  m_Center: {x: 0, y: 0.03963512, z: -0.09642029}
 --- !u!1 &6704044404797896495
 GameObject:
   m_ObjectHideFlags: 0

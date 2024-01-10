@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(CarController))]
+
 public class AiCarController : MonoBehaviour, IAICar
 {
     [SerializeField] private float gasDampen;
@@ -26,6 +26,13 @@ public class AiCarController : MonoBehaviour, IAICar
         {
             isInsideBraking = true;
             StartCoroutine(ResetBraking());
+        }
+
+        CheckPoint checkPoint = other.GetComponent<CheckPoint>();
+
+        if (checkPoint != null)
+        {
+            RaceManager.instance.OnAIEnteredCheckPoint(checkPoint, this);
         }
     }
 

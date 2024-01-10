@@ -13161,7 +13161,7 @@ GameObject:
   - component: {fileID: 1521509447634239396}
   m_Layer: 7
   m_Name: Tuner
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13200,8 +13200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf55bea8d0824d72a0ee5012fa6a360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasDampen: 0
-  maximumAngle: 45
+  gasDampen: 1
+  maximumAngle: 90
   maximumSpeed: 180
 --- !u!114 &7093210813216804034
 MonoBehaviour:
@@ -13373,8 +13373,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.58, y: 1.2282, z: 5.643363}
-  m_Center: {x: 0, y: 0.06743765, z: -0.031681538}
+  m_Size: {x: 2.58, y: 1.392642, z: 6.2957764}
+  m_Center: {x: 0, y: -0.014783353, z: 0.13009644}
 --- !u!1 &6704044404797896495
 GameObject:
   m_ObjectHideFlags: 0
