@@ -5737,6 +5737,7 @@ GameObject:
   - component: {fileID: 1580949711}
   - component: {fileID: 1580949710}
   - component: {fileID: 1580949709}
+  - component: {fileID: 1580949712}
   m_Layer: 5
   m_Name: Desert
   m_TagString: Untagged
@@ -5807,7 +5808,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580949710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1580949712}
+        m_TargetAssemblyTypeName: RaceSelectUI, Assembly-CSharp
+        m_MethodName: OnCurrentRaceClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1783454990}
+        m_TargetAssemblyTypeName: PopupGarage, Assembly-CSharp
+        m_MethodName: OnCurrentCarSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 447824449}
+        m_TargetAssemblyTypeName: PopupRaceSelector, Assembly-CSharp
+        m_MethodName: OnRaceSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1580949710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5846,6 +5883,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580949707}
   m_CullTransparentMesh: 1
+--- !u!114 &1580949712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580949707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818cc045176ff4a1bb86baf158c86292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceId: 1
 --- !u!1 &1581520419
 GameObject:
   m_ObjectHideFlags: 0
@@ -7646,6 +7696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fbb57fa1b734d7aae0d9e5f1eb48fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupLevelLost: {fileID: 0}
   popupRaceEnd: {fileID: 0}
   popupPauseMenu: {fileID: 0}
   settingsPopup: {fileID: 0}
@@ -7798,6 +7849,7 @@ GameObject:
   - component: {fileID: 1919470421}
   - component: {fileID: 1919470420}
   - component: {fileID: 1919470419}
+  - component: {fileID: 1919470422}
   m_Layer: 5
   m_Name: Forest
   m_TagString: Untagged
@@ -7865,10 +7917,46 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1919470420}
+  m_TargetGraphic: {fileID: 1580949710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1919470422}
+        m_TargetAssemblyTypeName: RaceSelectUI, Assembly-CSharp
+        m_MethodName: OnCurrentRaceClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1783454990}
+        m_TargetAssemblyTypeName: PopupGarage, Assembly-CSharp
+        m_MethodName: OnCurrentCarSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 447824449}
+        m_TargetAssemblyTypeName: PopupRaceSelector, Assembly-CSharp
+        m_MethodName: OnRaceSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1919470420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7907,6 +7995,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919470417}
   m_CullTransparentMesh: 1
+--- !u!114 &1919470422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919470417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818cc045176ff4a1bb86baf158c86292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceId: 2
 --- !u!1 &1935450458
 GameObject:
   m_ObjectHideFlags: 0

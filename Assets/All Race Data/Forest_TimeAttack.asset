@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6dd2697c2a74768bf18f2c6b2c201f, type: 3}
+  m_Name: Forest_TimeAttack
+  m_EditorClassIdentifier: 
+  raceId: 2
+  startingLine:
+    position: {x: -505.9, y: 0.53, z: 282.8}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  checkPoints:
+  - position: {x: -513.8, y: -1.8, z: 326.4}
+    rotation: {x: -0, y: 0.9997225, z: -0, w: 0.023559833}
+  - position: {x: -527.2, y: 0.97, z: 377}
+    rotation: {x: -0, y: 0.9997225, z: -0, w: 0.023559833}
+  - position: {x: -534.3, y: 0.29, z: 430.8}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  - position: {x: -576.5, y: 0.29, z: 442.1}
+    rotation: {x: -0, y: 0.7975779, z: -0, w: 0.603216}
+  - position: {x: -593, y: 0.29, z: 449.3}
+    rotation: {x: -0, y: 0.7975779, z: -0, w: 0.603216}
+  - position: {x: -587.7, y: 0.29, z: 484.5}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  - position: {x: -587.4, y: 0.29, z: 503.1}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  - position: {x: -570.8, y: 0.29, z: 524.4}
+    rotation: {x: -0, y: 0.34529823, z: -0, w: 0.938493}
+  - position: {x: -550.8, y: 1.22, z: 537.3}
+    rotation: {x: -0, y: 0.61909384, z: -0, w: 0.785317}
+  - position: {x: -516, y: 8, z: 534.3}
+    rotation: {x: -0, y: 0.7970572, z: -0, w: 0.6039038}
+  - position: {x: -495.7, y: 2.61, z: 493}
+    rotation: {x: -0, y: 0.9997224, z: -0, w: 0.023559831}
+  finishLine:
+    position: {x: -483, y: 4.53, z: 456.8}
+    rotation: {x: -0, y: 1, z: -0, w: 0}
+  playerStartPoint:
+    position: {x: -504.49997, y: 0.88, z: 276}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  otherRacersStartPoint: []
+  directionPoints:
+  - position: {x: -535.8, y: 1.71, z: 438.7}
+    rotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  - position: {x: -597.7, y: 1.71, z: 449.3}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+  - position: {x: -563.09, y: 1.71, z: 532.3}
+    rotation: {x: -0, y: 0.49178997, z: -0, w: 0.87071395}
+  - position: {x: -525.76, y: 5.64, z: 528.41}
+    rotation: {x: -0.000000035720223, y: 0.68573767, z: 0.000000039469246, w: 0.7278489}
+  raceType: 0
+  areaType: 2
+  rewardsPerPosition: dc050000
+  raceTime: 70
