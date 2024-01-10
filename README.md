@@ -1,13 +1,21 @@
 Street Racer
 
-Note: I do not own the assets. Those were made and all rights reserved by Synty.
+Note: I do not own the assets. Those were made and all rights were reserved by Synty.
 
-Street Racer is an Open-world racing game prototype inspired from Need For Speed Heat and Forza Horizon 5. This game features a mid-scale map with three different areas: City, Desert and Forest.
-It has Two different race modes: Time-attack and Sprint. 
+Street Racer is an Open-world racing game prototype inspired by Need For Speed Heat and Forza Horizon 5. This game features a mid-scale map with three different areas: City, Desert, and Forest.
+It has two different race modes: Time-attack and Sprint. 
 As this project is a prototype and a submission to a university lab, the race logic and AI logic are very simple due to the time constraint. 
+All the project codes are inside the Scripts folder. The scenes folder contains all the scenes.
+
+Scenes:
+MainMenu -> Self-explanatory
+FreeRoam -> Free Roam scene
+RaceLevel -> Scene for all the races
+Level Creator -> Level creating tool
+Test -> Where the driving system was prototyped
 
 Systems Implemented:
-1) Physics based driving system
+1) Physics-based driving system
 2) AI
 3) Level Generator Tool (Used to all 6 races)
 4) Save/Load system
