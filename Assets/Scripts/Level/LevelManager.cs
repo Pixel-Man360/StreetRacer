@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MunStudios;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private string carSaveHash = "Current Car";
     private int currentCar = 0;
-    private CarController currentCarController;
+    private MunStudios.CarController currentCarController;
     private float raceStartTime;
     private int currentReward;
 
@@ -61,7 +62,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnPlayer(Vector3 position, Quaternion rotation)
     {
         GameObject obj = Instantiate(allCars[currentCar], position, rotation);
-        currentCarController = obj.GetComponent<CarController>();
+        currentCarController = obj.GetComponent<MunStudios.CarController>();
         CameraFollow.instance.SetTarget(currentCarController.gameObject, currentCarController.GetCameraOffset().gameObject);
     }
 

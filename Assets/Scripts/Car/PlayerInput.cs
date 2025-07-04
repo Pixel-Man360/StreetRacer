@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private CarController carController;
+    [SerializeField] private MunStudios.CarController carController;
     internal float steerInput = 0;
     internal float gasInput = 0;
 
