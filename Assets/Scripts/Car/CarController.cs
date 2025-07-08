@@ -67,11 +67,8 @@ namespace MunStudios
             canDrive = val;
         }
 
-
-
         void FixedUpdate()
         {
-
             speed = wheels[2].GetRPM() * wheels[2].GetRadius() * 2f * Mathf.PI / 10f;
             speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
 
@@ -235,7 +232,7 @@ namespace MunStudios
 
         private void HandleAcceleration()
         {
-            //if (!canDrive) return;
+            if (!canDrive) return;
 
             if (gasInput < 0)
             {
@@ -271,7 +268,7 @@ namespace MunStudios
 
         private void HandleBraking()
         {
-            // if (!canDrive) return;
+            if (!canDrive) return;
 
             if (brakeInput > 0)
             {

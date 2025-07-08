@@ -60,13 +60,22 @@ public class Wheel : MonoBehaviour
         if (Mathf.Abs(hit.sidewaysSlip) + Mathf.Abs(hit.forwardSlip) > slipAllowance)
         {
             smokeParticle.Play();
-            trailRenderer.emitting = true;
+
+            if (trailRenderer != null)
+            {
+                trailRenderer.emitting = true;
+            }
+
         }
 
         else
         {
             smokeParticle.Stop();
-            trailRenderer.emitting = false;
+
+            if (trailRenderer != null)
+            {
+                trailRenderer.emitting = false;
+            }
         }
     }
 
