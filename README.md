@@ -2,7 +2,7 @@
 
 Street Racer is an Open-world racing game prototype inspired by Need For Speed Heat and Forza Horizon 5. This game features a mid-scale map with three different areas: City, Desert, and Forest.  
 It has two different race modes: Time-attack and Sprint.  
-As this project is just a prototype, the race logic and AI logic are very simple due for now.  
+As this project is just a prototype and made for a university lab, the race logic and AI logic are very simple due to the time constraint and there are lots of bugs. 
 All the project codes are inside the Scripts folder. The scenes folder contains all the scenes.
 
 ---
