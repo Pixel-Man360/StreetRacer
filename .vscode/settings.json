@@ -56,6 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "StreetRacer.sln",
+    "dotnet.defaultSolution": "Street Racer.sln",
     "cmake.sourceDirectory": "/Users/pixelman360/Documents/Projects/Street Racer/Library/PackageCache/com.unity.ide.visualstudio@2.0.22/Editor/COMIntegration/COMIntegration~"
 }
