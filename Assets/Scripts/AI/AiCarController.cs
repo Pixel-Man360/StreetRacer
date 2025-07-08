@@ -8,7 +8,7 @@ public class AiCarController : MonoBehaviour, IAICar
     [SerializeField] private float maximumAngle = 90f;
     [SerializeField] private float maximumSpeed = 120f;
     private CheckPoint currentCheckPoint;
-    private CarController carController;
+    private MunStudios.CarController carController;
     private float currentAngle;
     private float gasInput;
     private bool isInsideBraking = false;
@@ -17,7 +17,7 @@ public class AiCarController : MonoBehaviour, IAICar
 
     void Start()
     {
-        carController = GetComponent<CarController>();
+        carController = GetComponent<MunStudios.CarController>();
     }
 
     void OnTriggerEnter(Collider other)
